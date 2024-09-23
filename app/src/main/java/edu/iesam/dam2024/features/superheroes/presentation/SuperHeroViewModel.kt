@@ -1,7 +1,5 @@
 package edu.iesam.dam2024.features.superheroes.presentation
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import edu.iesam.dam2024.features.superheroes.domain.GetSuperHeroesUseCase
 import edu.iesam.dam2024.features.superheroes.domain.Models
