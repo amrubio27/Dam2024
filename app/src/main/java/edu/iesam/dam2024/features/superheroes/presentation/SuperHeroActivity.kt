@@ -15,9 +15,9 @@ class MainActivity : AppCompatActivity() {
 
         val viewModel = superHeroFactory.buildViewModel()
         val superHeroesList = viewModel.fetchSuperHeroes()
-        val superHero = viewModel.fetchSuperHeroById(1)
 
 
         Log.d("@Dev", superHeroesList.toString())
+        Log.d("@Dev", viewModel.fetchSuperHeroById(2).toString())
     }
 }

@@ -1,15 +1,21 @@
 package edu.iesam.dam2024.features.superheroes.data.remote
 
-import edu.iesam.dam2024.features.superheroes.domain.Models
+import edu.iesam.dam2024.features.superheroes.domain.Appearance
+import edu.iesam.dam2024.features.superheroes.domain.Biography
+import edu.iesam.dam2024.features.superheroes.domain.Connections
+import edu.iesam.dam2024.features.superheroes.domain.Images
+import edu.iesam.dam2024.features.superheroes.domain.PowerStats
+import edu.iesam.dam2024.features.superheroes.domain.SuperHero
+import edu.iesam.dam2024.features.superheroes.domain.Work
 
 class SuperHeroMockDataSource {
 
-    private val superHeroes: List<Models.SuperHero> = listOf(
-        Models.SuperHero(
+    private val superHeroes: List<SuperHero> = listOf(
+        SuperHero(
             id = 1,
             name = "A-Bomb",
             slug = "1-a-bomb",
-            powerstats = Models.PowerStats(
+            powerstats = PowerStats(
                 intelligence = 38,
                 strength = 100,
                 speed = 17,
@@ -17,7 +23,7 @@ class SuperHeroMockDataSource {
                 power = 24,
                 combat = 64
             ),
-            appearance = Models.Appearance(
+            appearance = Appearance(
                 gender = "Male",
                 race = "Human",
                 height = listOf("6'8", "203 cm"),
@@ -25,7 +31,7 @@ class SuperHeroMockDataSource {
                 eyeColor = "Yellow",
                 hairColor = "No Hair"
             ),
-            biography = Models.Biography(
+            biography = Biography(
                 fullName = "Richard Milhouse Jones",
                 alterEgos = "No alter egos found.",
                 aliases = listOf("Rick Jones"),
@@ -34,26 +40,26 @@ class SuperHeroMockDataSource {
                 publisher = "Marvel Comics",
                 alignment = "good"
             ),
-            work = Models.Work(
+            work = Work(
                 occupation = "Musician, adventurer, author; formerly talk show host",
                 base = "-"
             ),
-            connections = Models.Connections(
+            connections = Connections(
                 groupAffiliation = "Hulk Family; Excelsior (sponsor), Avengers (honorary member); formerly partner of the Hulk, Captain America and Captain Marvel; Teen Brigade; ally of Rom",
                 relatives = "Marlo Chandler-Jones (wife); Polly (aunt); Mrs. Chandler (mother-in-law); Keith Chandler, Ray Chandler, three unidentified others (brothers-in-law); unidentified father (deceased); Jackie Shorr (alleged mother; unconfirmed)"
             ),
-            images = Models.Images(
+            images = Images(
                 xs = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/xs/1-a-bomb.jpg",
                 sm = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/1-a-bomb.jpg",
                 md = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/1-a-bomb.jpg",
                 lg = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/1-a-bomb.jpg"
             )
         ),
-        Models.SuperHero(
+        SuperHero(
             id = 2,
             name = "Abe Sapien",
             slug = "2-abe-sapien",
-            powerstats = Models.PowerStats(
+            powerstats = PowerStats(
                 intelligence = 88,
                 strength = 28,
                 speed = 35,
@@ -61,7 +67,7 @@ class SuperHeroMockDataSource {
                 power = 100,
                 combat = 85
             ),
-            appearance = Models.Appearance(
+            appearance = Appearance(
                 gender = "Male",
                 race = "Icthyo Sapien",
                 height = listOf("6'3", "191 cm"),
@@ -69,7 +75,7 @@ class SuperHeroMockDataSource {
                 eyeColor = "Blue",
                 hairColor = "No Hair"
             ),
-            biography = Models.Biography(
+            biography = Biography(
                 fullName = "Abraham Sapien",
                 alterEgos = "No alter egos found.",
                 aliases = listOf("Langdon Everett Caul", "Abraham Sapien", "Langdon Caul"),
@@ -78,26 +84,26 @@ class SuperHeroMockDataSource {
                 publisher = "Dark Horse Comics",
                 alignment = "good"
             ),
-            work = Models.Work(
+            work = Work(
                 occupation = "Paranormal Investigator",
                 base = "-"
             ),
-            connections = Models.Connections(
+            connections = Connections(
                 groupAffiliation = "Bureau for Paranormal Research and Defense",
                 relatives = "Edith Howard (wife, deceased)"
             ),
-            images = Models.Images(
+            images = Images(
                 xs = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/xs/2-abe-sapien.jpg",
                 sm = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/2-abe-sapien.jpg",
                 md = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/2-abe-sapien.jpg",
                 lg = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/2-abe-sapien.jpg"
             )
         ),
-        Models.SuperHero(
+        SuperHero(
             id = 3,
             name = "Abin Sur",
             slug = "3-abin-sur",
-            powerstats = Models.PowerStats(
+            powerstats = PowerStats(
                 intelligence = 50,
                 strength = 90,
                 speed = 53,
@@ -105,7 +111,7 @@ class SuperHeroMockDataSource {
                 power = 99,
                 combat = 65
             ),
-            appearance = Models.Appearance(
+            appearance = Appearance(
                 gender = "Male",
                 race = "Ungaran",
                 height = listOf("6'1", "185 cm"),
@@ -113,7 +119,7 @@ class SuperHeroMockDataSource {
                 eyeColor = "Blue",
                 hairColor = "No Hair"
             ),
-            biography = Models.Biography(
+            biography = Biography(
                 fullName = "",
                 alterEgos = "No alter egos found.",
                 aliases = listOf("Lagzia"),
@@ -122,26 +128,26 @@ class SuperHeroMockDataSource {
                 publisher = "DC Comics",
                 alignment = "good"
             ),
-            work = Models.Work(
+            work = Work(
                 occupation = "Green Lantern, former history professor",
                 base = "Oa"
             ),
-            connections = Models.Connections(
+            connections = Connections(
                 groupAffiliation = "Green Lantern Corps, Black Lantern Corps",
                 relatives = "Amon Sur (son), Arin Sur (sister), Thaal Sinestro (brother-in-law), Soranik Natu (niece)"
             ),
-            images = Models.Images(
+            images = Images(
                 xs = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/xs/3-abin-sur.jpg",
                 sm = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/3-abin-sur.jpg",
                 md = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/3-abin-sur.jpg",
                 lg = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/3-abin-sur.jpg"
             )
         ),
-        Models.SuperHero(
+        SuperHero(
             id = 4,
             name = "Abomination",
             slug = "4-abomination",
-            powerstats = Models.PowerStats(
+            powerstats = PowerStats(
                 intelligence = 63,
                 strength = 80,
                 speed = 53,
@@ -149,7 +155,7 @@ class SuperHeroMockDataSource {
                 power = 62,
                 combat = 95
             ),
-            appearance = Models.Appearance(
+            appearance = Appearance(
                 gender = "Male",
                 race = "Human / Radiation",
                 height = listOf("6'8", "203 cm"),
@@ -157,7 +163,7 @@ class SuperHeroMockDataSource {
                 eyeColor = "Green",
                 hairColor = "No Hair"
             ),
-            biography = Models.Biography(
+            biography = Biography(
                 fullName = "Emil Blonsky",
                 alterEgos = "No alter egos found.",
                 aliases = listOf("Agent R-7", "Ravager of Worlds"),
@@ -166,26 +172,26 @@ class SuperHeroMockDataSource {
                 publisher = "Marvel Comics",
                 alignment = "bad"
             ),
-            work = Models.Work(
+            work = Work(
                 occupation = "Ex-Spy",
                 base = "Mobile"
             ),
-            connections = Models.Connections(
+            connections = Connections(
                 groupAffiliation = "former member of the crew of the Andromeda Starship, ally of the Abominations and Forgotten",
                 relatives = "Nadia Dornova Blonsky (wife, separated)"
             ),
-            images = Models.Images(
+            images = Images(
                 xs = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/xs/4-abomination.jpg",
                 sm = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/4-abomination.jpg",
                 md = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/4-abomination.jpg",
                 lg = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/4-abomination.jpg"
             )
         ),
-        Models.SuperHero(
+        SuperHero(
             id = 5,
             name = "Abraxas",
             slug = "5-abraxas",
-            powerstats = Models.PowerStats(
+            powerstats = PowerStats(
                 intelligence = 88,
                 strength = 63,
                 speed = 83,
@@ -193,7 +199,7 @@ class SuperHeroMockDataSource {
                 power = 100,
                 combat = 55
             ),
-            appearance = Models.Appearance(
+            appearance = Appearance(
                 gender = "Male",
                 race = "Cosmic Entity",
                 height = listOf("-", "0 cm"),
@@ -201,7 +207,7 @@ class SuperHeroMockDataSource {
                 eyeColor = "Blue",
                 hairColor = "Black"
             ),
-            biography = Models.Biography(
+            biography = Biography(
                 fullName = "Abraxas",
                 alterEgos = "No alter egos found.",
                 aliases = listOf("-"),
@@ -210,15 +216,15 @@ class SuperHeroMockDataSource {
                 publisher = "Marvel Comics",
                 alignment = "bad"
             ),
-            work = Models.Work(
+            work = Work(
                 occupation = "Dimensional destroyer",
                 base = "-"
             ),
-            connections = Models.Connections(
+            connections = Connections(
                 groupAffiliation = "Cosmic Beings",
                 relatives = "Eternity (\"Father\")"
             ),
-            images = Models.Images(
+            images = Images(
                 xs = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/xs/5-abraxas.jpg",
                 sm = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/5-abraxas.jpg",
                 md = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/5-abraxas.jpg",
@@ -228,11 +234,11 @@ class SuperHeroMockDataSource {
     )
 
 
-    fun getSuperHeroes(): List<Models.SuperHero> {
+    fun getSuperHeroes(): List<SuperHero> {
         return superHeroes
     }
 
-    fun getSuperHeroById(id: Int): Models.SuperHero? {
+    fun getSuperHeroById(id: Int): SuperHero? {
         return superHeroes.find { it.id == id }
     }
 }
