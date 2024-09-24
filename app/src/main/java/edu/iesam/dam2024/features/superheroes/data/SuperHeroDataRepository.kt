@@ -14,3 +14,4 @@ class SuperHeroDataRepository(private val mockRemoteDataSource: SuperHeroMockDat
         return mockRemoteDataSource.getSuperHeroById(id)
     }
 }
+
