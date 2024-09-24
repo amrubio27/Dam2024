@@ -1,17 +1,17 @@
 package edu.iesam.dam2024.features.superheroes.data
 
-import edu.iesam.dam2024.features.superheroes.data.remote.SuperHeroMockDataSource
+import edu.iesam.dam2024.features.superheroes.data.remote.SuperHeroRemoteDataSource
 import edu.iesam.dam2024.features.superheroes.domain.SuperHero
 import edu.iesam.dam2024.features.superheroes.domain.SuperHeroRepository
 
-class SuperHeroDataRepository(private val mockRemoteDataSource: SuperHeroMockDataSource) :
+class SuperHeroDataRepository(private val remoteDataSource: SuperHeroRemoteDataSource) :
     SuperHeroRepository {
-    override fun getSuperHeroes(): List<SuperHero> {
-        return mockRemoteDataSource.getSuperHeroes()
+    override suspend fun getSuperHeroes(): List<SuperHero> {
+        return remoteDataSource.getSuperHeroes()
     }
 
-    override fun getSuperHeroById(id: Int): SuperHero? {
-        return mockRemoteDataSource.getSuperHeroById(id)
+    override suspend fun getSuperHeroById(id: Int): SuperHero? {
+        return remoteDataSource.getSuperHeroById(id)
     }
 }
 
