@@ -29,8 +29,6 @@ class MovieActivity : AppCompatActivity() {
         val movies = viewModel.viewCreated()
         bindData(movies)
 
-        val movieByID= viewModel.itemSelected("1")
-
         Log.d("@dev", movies.toString())
     }
 
