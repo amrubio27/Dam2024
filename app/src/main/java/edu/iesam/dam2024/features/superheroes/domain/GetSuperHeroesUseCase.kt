@@ -4,4 +4,7 @@ class GetSuperHeroesUseCase(private val repository: SuperHeroRepository) {
     operator fun invoke(): List<Models.SuperHero> {
         return repository.getSuperHeroes()
     }
+    fun getSuperHeroById(id: Int): Models.SuperHero? {
+        return repository.getSuperHeroById(id)
+    }
 }

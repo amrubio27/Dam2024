@@ -14,9 +14,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val viewModel = superHeroFactory.buildViewModel()
-        val superHeroes = viewModel.fetchSuperHeroes()
+        val superHeroesList = viewModel.fetchSuperHeroes()
+        val superHero = viewModel.fetchSuperHeroById(1)
 
-        Log.d("@Dev", superHeroes.toString())
 
+        Log.d("@Dev", superHeroesList.toString())
     }
 }

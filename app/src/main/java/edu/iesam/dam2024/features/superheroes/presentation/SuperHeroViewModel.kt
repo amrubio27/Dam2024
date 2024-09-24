@@ -10,4 +10,8 @@ class SuperHeroViewModel(private val getSuperHeroesUseCase: GetSuperHeroesUseCas
         return getSuperHeroesUseCase.invoke()
 
     }
+
+    fun fetchSuperHeroById(id: Int): Models.SuperHero? {
+        return getSuperHeroesUseCase.getSuperHeroById(id)
+    }
 }
