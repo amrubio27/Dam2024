@@ -12,10 +12,11 @@ class SuperHeroViewModel(
 
     suspend fun fetchSuperHeroes(): List<SuperHero> {
         return getSuperHeroesUseCase.invoke()
-
     }
 
-    suspend fun fetchSuperHeroById(id: Int): SuperHero? {
+    suspend fun fetchSuperHeroById(id: String): SuperHero? {
         return getSuperHeroUseCase.invoke(id)
     }
+
+
 }

@@ -11,8 +11,8 @@ class SuperHeroRemoteDataSource {
         return response.body() ?: emptyList()
     }
 
-    suspend fun getSuperHeroById(id: Int): SuperHero? {
+    suspend fun getSuperHeroById(id: String): SuperHero? {
         val response = apiClient.apiService.getHeroById(id)
-        return response.body()
+        return response?.body()
     }
 }

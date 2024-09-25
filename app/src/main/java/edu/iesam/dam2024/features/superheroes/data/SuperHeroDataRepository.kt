@@ -10,7 +10,7 @@ class SuperHeroDataRepository(private val remoteDataSource: SuperHeroRemoteDataS
         return remoteDataSource.getSuperHeroes()
     }
 
-    override suspend fun getSuperHeroById(id: Int): SuperHero? {
+    override suspend fun getSuperHeroById(id: String): SuperHero? {
         return remoteDataSource.getSuperHeroById(id)
     }
 }
