@@ -4,14 +4,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import edu.iesam.dam2024.R
-import edu.iesam.dam2024.features.movies.data.MovieDataRepository
-import edu.iesam.dam2024.features.movies.data.remote.MovieMockRemoteDataSource
-import edu.iesam.dam2024.features.movies.domain.GetMoviesUseCase
+import edu.iesam.dam2024.features.movies.data.local.MovieXmlLocalDataSource
 import edu.iesam.dam2024.features.movies.domain.Movie
 
 class MovieActivity : AppCompatActivity() {
@@ -29,13 +24,15 @@ class MovieActivity : AppCompatActivity() {
         val movies = viewModel.viewCreated()
         bindData(movies)
 
+        testXml()
+
         Log.d("@dev", movies.toString())
     }
 
     private fun bindData(movies: List<Movie>) {
         findViewById<TextView>(R.id.movie_id_1).text = movies[0].id
         findViewById<TextView>(R.id.movie_title_1).text = movies[0].title
-        findViewById<LinearLayout>(R.id.layout_1).setOnClickListener{
+        findViewById<LinearLayout>(R.id.layout_1).setOnClickListener {
             val movie1: Movie? = viewModel.itemSelected(movies[0].id)
             movie1?.let {
                 Log.d("@dev", "Movie selected: ${it.title}")
@@ -51,6 +48,17 @@ class MovieActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.movie_id_4).text = movies[3].id
         findViewById<TextView>(R.id.movie_title_4).text = movies[3].title
 
+    }
+
+    private fun testXml() {
+        val xmlDataSource = MovieXmlLocalDataSource(this)
+        val movie = viewModel.itemSelected("1")
+        movie?.let {
+            xmlDataSource.save(it)
+        }
+
+        val movieSaved = xmlDataSource.getMovie()
+        Log.d("@dev", movieSaved.toString())
     }
 
     override fun onStart() {
