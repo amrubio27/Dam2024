@@ -31,7 +31,7 @@ class MovieXmlLocalDataSource(private val context: Context) {
     }
 
     fun saveAll(movies: List<Movie>) {
-        //lo instancio fuera para que no este creando todo el raoto el objeto editor
+        //lo instancio fuera para que no este creando to-do el rato el objeto editor
         val editor = sharedPref.edit()
         movies.forEach { movie ->
             editor.putString(movie.id, gson.toJson(movie))

@@ -15,18 +15,23 @@ class MovieActivity : AppCompatActivity() {
         MovieViewModel(GetMoviesUseCase(MovieDataRepository(MovieMockRemoteDataSource())))
     */
 
-    private val movieFactory: MovieFactory = MovieFactory()
-    private val viewModel: MovieViewModel = movieFactory.buildViewModel()
+    /*private val movieFactory: MovieFactory = MovieFactory()
+    private val viewModel: MovieViewModel = movieFactory.buildViewModel()*/
+
+    private lateinit var movieFactory: MovieFactory
+    private lateinit var viewModel: MovieViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        movieFactory = MovieFactory(this)
+        viewModel = movieFactory.buildViewModel()
+
         val movies = viewModel.viewCreated()
         bindData(movies)
 
-        testXml()
-
-        Log.d("@dev", movies.toString())
+        testListXml()
     }
 
     private fun bindData(movies: List<Movie>) {
@@ -57,15 +62,10 @@ class MovieActivity : AppCompatActivity() {
             xmlDataSource.save(it)
         }
 
-        /*val movieSaved = xmlDataSource.find()
+        val movieSaved = xmlDataSource.find()
         Log.d("@dev", movieSaved.toString())
 
-        val movieDelete = xmlDataSource.delete()*/
-
-        testListXml()
-
-
-
+        xmlDataSource.delete()
     }
 
     private fun testListXml() {
