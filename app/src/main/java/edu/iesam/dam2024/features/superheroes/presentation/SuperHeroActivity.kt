@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import edu.iesam.dam2024.R
+import edu.iesam.dam2024.features.superheroes.data.local.SuperHeroXmlLocalDataSource
 import edu.iesam.dam2024.features.superheroes.domain.SuperHero
 import kotlinx.coroutines.launch
 
@@ -23,6 +24,10 @@ class MainActivity : AppCompatActivity() {
             val superHeroes = viewModel.fetchSuperHeroes()
             bindData(superHeroes)
             //Log.d("@Dev", "SuperHeroes: $superHeroes")
+
+            testXml()
+
+
         }
     }
 
@@ -45,6 +50,19 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.superhero_id_4).text = superHeroes[3].id.toString()
         findViewById<TextView>(R.id.superhero_name_4).text = superHeroes[3].name
+    }
+
+    private suspend fun testXml() {
+        val xmlDataSource = SuperHeroXmlLocalDataSource(this)
+        val superHero = viewModel.fetchSuperHeroById("1")
+        superHero?.let {
+            xmlDataSource.save(it)
+        }
+
+        val superHeroSaved = xmlDataSource.find()
+        Log.d("@Dev", superHeroSaved.toString())
+
+        val superHeroDelete = xmlDataSource.delete()
     }
 
 }
