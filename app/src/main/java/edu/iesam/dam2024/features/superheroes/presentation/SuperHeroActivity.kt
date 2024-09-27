@@ -59,10 +59,10 @@ class MainActivity : AppCompatActivity() {
             xmlDataSource.save(it)
         }
 
-        val superHeroSaved = xmlDataSource.find()
+        /*val superHeroSaved = xmlDataSource.find()
         Log.d("@Dev", superHeroSaved.toString())
 
-        val superHeroDelete = xmlDataSource.delete()
+        val superHeroDelete = xmlDataSource.delete()*/
     }
 
 }

@@ -10,7 +10,7 @@ import edu.iesam.dam2024.features.superheroes.domain.PowerStats
 import edu.iesam.dam2024.features.superheroes.domain.SuperHero
 import edu.iesam.dam2024.features.superheroes.domain.Work
 
-class SuperHeroXmlLocalDataSource(private val context: Context) {
+class SuperHeroXmlLocalDataSource(context: Context) {
     private val sharedPref = context.getSharedPreferences(
         context.getString(R.string.app_name), Context.MODE_PRIVATE
     )
