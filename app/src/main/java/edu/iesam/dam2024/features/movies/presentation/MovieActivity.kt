@@ -57,13 +57,24 @@ class MovieActivity : AppCompatActivity() {
             xmlDataSource.save(it)
         }
 
-        val movieSaved = xmlDataSource.find()
+        /*val movieSaved = xmlDataSource.find()
         Log.d("@dev", movieSaved.toString())
 
-        val movieDelete = xmlDataSource.delete()
+        val movieDelete = xmlDataSource.delete()*/
+
+        testListXml()
 
 
 
+    }
+
+    private fun testListXml() {
+        val movies = viewModel.viewCreated()
+        val xmlDataSource = MovieXmlLocalDataSource(this)
+        xmlDataSource.saveAll(movies)
+
+        val moviesFromXml = xmlDataSource.findAll()
+        Log.d("@Dev", moviesFromXml.toString())
     }
 
     override fun onStart() {
