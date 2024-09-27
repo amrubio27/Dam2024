@@ -11,17 +11,32 @@ class MovieXmlLocalDataSource(private val context: Context) {
     )
 
     fun save(movie: Movie) {
-        val editor = sharedPref.edit()
+        /*val editor = sharedPref.edit()
         editor.putString("id", movie.id)
         editor.putString("title", movie.title)
         editor.putString("poster", movie.poster)
-        editor.apply()
+        editor.apply()*/
+
+        //with scopefunction
+        sharedPref.edit().apply {
+            putString("id", movie.id)
+            putString("title", movie.title)
+            putString("poster", movie.poster)
+            apply()
+        }
+
     }
 
-    fun getMovie(): Movie {
+    fun find(): Movie {
         val id = sharedPref.getString("id", "")
         val title = sharedPref.getString("title", "")
         val poster = sharedPref.getString("poster", "")
         return Movie(id!!, title!!, poster!!)
     }
+
+    fun delete() {
+        sharedPref.edit().clear().apply()
+    }
+
+
 }

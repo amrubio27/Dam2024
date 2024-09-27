@@ -57,8 +57,13 @@ class MovieActivity : AppCompatActivity() {
             xmlDataSource.save(it)
         }
 
-        val movieSaved = xmlDataSource.getMovie()
+        val movieSaved = xmlDataSource.find()
         Log.d("@dev", movieSaved.toString())
+
+        val movieDelete = xmlDataSource.delete()
+
+
+
     }
 
     override fun onStart() {
