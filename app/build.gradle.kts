@@ -48,6 +48,6 @@ dependencies {
 
     //Retrofit
     implementation(libs.retrofit)
-    //Retrofit Gson Converter
+    //Gson Converter
     implementation (libs.converter.gson.v2110)
 }

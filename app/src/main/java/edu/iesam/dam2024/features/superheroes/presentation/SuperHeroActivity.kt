@@ -54,10 +54,13 @@ class MainActivity : AppCompatActivity() {
 
     private suspend fun testXml() {
         val xmlDataSource = SuperHeroXmlLocalDataSource(this)
-        val superHero = viewModel.fetchSuperHeroById("1")
+        /*val superHero = viewModel.fetchSuperHeroById("1")
         superHero?.let {
             xmlDataSource.save(it)
-        }
+        }*/
+
+        val superHeroes = viewModel.fetchSuperHeroes()
+        xmlDataSource.saveAll(superHeroes)
 
         /*val superHeroSaved = xmlDataSource.find()
         Log.d("@Dev", superHeroSaved.toString())
