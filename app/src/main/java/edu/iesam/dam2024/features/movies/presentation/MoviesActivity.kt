@@ -9,7 +9,7 @@ import edu.iesam.dam2024.R
 import edu.iesam.dam2024.features.movies.data.local.MovieXmlLocalDataSource
 import edu.iesam.dam2024.features.movies.domain.Movie
 
-class MovieActivity : AppCompatActivity() {
+class MoviesActivity : AppCompatActivity() {
     /*
     private val viewModel: MovieViewModel =
         MovieViewModel(GetMoviesUseCase(MovieDataRepository(MovieMockRemoteDataSource())))
@@ -18,14 +18,14 @@ class MovieActivity : AppCompatActivity() {
     /*private val movieFactory: MovieFactory = MovieFactory()
     private val viewModel: MovieViewModel = movieFactory.buildViewModel()*/
 
-    private lateinit var movieFactory: MovieFactory
-    private lateinit var viewModel: MovieViewModel
+    private lateinit var movieFactory: MoviesFactory
+    private lateinit var viewModel: MoviesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_movie)
 
-        movieFactory = MovieFactory(this)
+        movieFactory = MoviesFactory(this)
         viewModel = movieFactory.buildViewModel()
 
         val movies = viewModel.viewCreated()
