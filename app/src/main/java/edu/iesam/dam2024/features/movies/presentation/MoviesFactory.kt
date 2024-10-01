@@ -7,7 +7,7 @@ import edu.iesam.dam2024.features.movies.data.remote.MovieMockRemoteDataSource
 import edu.iesam.dam2024.features.movies.domain.GetMovieUseCase
 import edu.iesam.dam2024.features.movies.domain.GetMoviesUseCase
 
-class MoviesFactory(private val context: Context) {
+class MoviesFactory(context: Context) {
 
     private val movieMockRemote = MovieMockRemoteDataSource()
     private val movieLocal = MovieXmlLocalDataSource(context)
@@ -17,9 +17,13 @@ class MoviesFactory(private val context: Context) {
 
     fun buildViewModel(): MoviesViewModel {
         return MoviesViewModel(
-            getMoviesUseCase,
+            getMoviesUseCase
+        )
+    }
+
+    fun buildMovieDetailViewModel(): MovieDetailViewModel {
+        return MovieDetailViewModel(
             getMovieUseCase
         )
-
     }
 }
