@@ -14,17 +14,24 @@ class MovieXmlLocalDataSource(private val context: Context) {
     private val gson = Gson()
 
     fun save(movie: Movie) {
-        /*val editor = sharedPref.edit()
+        /*without scopefunction
+        val editor = sharedPref.edit()
         editor.putString("id", movie.id)
         editor.putString("title", movie.title)
         editor.putString("poster", movie.poster)
         editor.apply()*/
 
-        //with scopefunction
+        /*with scopefunction
         sharedPref.edit().apply {
             putString("id", movie.id)
             putString("title", movie.title)
             putString("poster", movie.poster)
+            apply()
+        }*/
+
+        //with gson
+        sharedPref.edit().apply {
+            putString(movie.id, gson.toJson(movie))
             apply()
         }
 
@@ -46,6 +53,12 @@ class MovieXmlLocalDataSource(private val context: Context) {
         return Movie(id!!, title!!, poster!!)
     }
 
+    fun findById(movieId: String): Movie? {
+        return sharedPref.getString(movieId, null)?.let { jsonMovie ->
+            gson.fromJson(jsonMovie, Movie::class.java)
+        }
+    }
+
     fun delete() {
         sharedPref.edit().clear().apply()
     }
@@ -59,6 +72,10 @@ class MovieXmlLocalDataSource(private val context: Context) {
             movies.add(movie)
         }
         return movies
+    }
+
+    fun deleteById(movieId: String) {
+        sharedPref.edit().remove(movieId).apply()
     }
 
 
