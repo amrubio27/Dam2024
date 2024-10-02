@@ -26,10 +26,10 @@ class MovieDetailActivity : AppCompatActivity() {
                 bindData(movie)
             }
         }
+    }
 
-        val movies = viewModel.viewCreated(getMovieId()!!)
-
-
+    private fun getMovieId(): String? {
+        return intent.getStringExtra(KEY_MOVIE_ID)
     }
 
     private fun bindData(movie: Movie) {
@@ -38,10 +38,6 @@ class MovieDetailActivity : AppCompatActivity() {
             .with(this)
             .load(movie.poster)
             .into(imageView)
-    }
-
-    private fun getMovieId(): String? {
-        return intent.getStringExtra(KEY_MOVIE_ID)
     }
 
     companion object {

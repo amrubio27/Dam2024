@@ -16,15 +16,15 @@ class MoviesActivity : AppCompatActivity() {
     /*private val movieFactory: MovieFactory = MovieFactory()
     private val viewModel: MovieViewModel = movieFactory.buildViewModel()*/
 
-    private lateinit var movieFactory: MoviesFactory
+    private lateinit var moviesFactory: MoviesFactory
     private lateinit var viewModel: MoviesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie)
 
-        movieFactory = MoviesFactory(this)
-        viewModel = movieFactory.buildViewModel()
+        moviesFactory = MoviesFactory(this)
+        viewModel = moviesFactory.buildViewModel()
 
         val movies = viewModel.viewCreated()
         bindData(movies)
