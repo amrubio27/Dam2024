@@ -48,4 +48,6 @@ dependencies {
     implementation(libs.converter.gson)
     // Glide
     implementation(libs.glide)
+    // Coil
+    implementation(libs.coil)
 }
