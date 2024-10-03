@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import coil.load
@@ -39,9 +40,10 @@ class SuperHeroDetailActivity : AppCompatActivity() {
 
     private fun bindData(superHero: SuperHero) {
         val imageView = findViewById<ImageView>(R.id.superhero_image)
-
         imageView.load(superHero.images.lg)
-
+        findViewById<TextView>(R.id.superhero_id).text = superHero.id.toString()
+        findViewById<TextView>(R.id.superhero_name).text = superHero.name
+        findViewById<TextView>(R.id.superhero_slug).text = superHero.slug
     }
 
     companion object {
