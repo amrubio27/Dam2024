@@ -17,30 +17,23 @@ class SuperHeroXmlLocalDataSource(context: Context) {
     }
 
     fun saveAll(superHeroes: List<SuperHero>) {
+        val editor = sharedPref.edit()
         superHeroes.forEach { superHero ->
-            save(superHero)
+            editor.putString(superHero.id.toString(), gson.toJson(superHero))
         }
+        editor.apply()
     }
 
-    fun findById(id: String): SuperHero? {
-        val json = sharedPref.getString(id, null)
-        return json?.let {
-            gson.fromJson(json, SuperHero::class.java)
+    fun findById(superHeroId: String): SuperHero? {
+        return sharedPref.getString(superHeroId, null)?.let { jsonSuperHero ->
+            gson.fromJson(jsonSuperHero, SuperHero::class.java)
         }
     }
 
     fun findAll(): List<SuperHero> {
-        val superHeroesList = mutableListOf<SuperHero>()
-        val mapSuperHeroes = sharedPref.all.toMap()
-        mapSuperHeroes.values.forEach { jsonSuperHero ->
-            val superHero = gson.fromJson(jsonSuperHero as String, SuperHero::class.java)
-            superHeroesList.add(superHero)
-        }
-        return superHeroesList
-
-        /*return sharedPref.all.toMap().values.mapNotNull { jsonSuperHero ->
+        return sharedPref.all.toMap().values.mapNotNull { jsonSuperHero ->
             gson.fromJson(jsonSuperHero as String, SuperHero::class.java)
-        }*/
+        }
     }
 
     fun delete() {

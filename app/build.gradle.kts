@@ -50,4 +50,6 @@ dependencies {
     implementation(libs.retrofit)
     //Gson Converter
     implementation (libs.converter.gson.v2110)
+    //Coil
+    implementation(libs.coil)
 }

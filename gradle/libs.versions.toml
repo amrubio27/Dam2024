@@ -1,5 +1,6 @@
 [versions]
 agp = "8.6.1"
+coil = "2.7.0"
 converterGson = "latest.version"
 converterGsonVersion = "2.11.0"
 kotlin = "1.9.0"
@@ -15,6 +16,7 @@ retrofit = "2.9.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+coil = { module = "io.coil-kt:coil", version.ref = "coil" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 converter-gson-v2110 = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGsonVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
