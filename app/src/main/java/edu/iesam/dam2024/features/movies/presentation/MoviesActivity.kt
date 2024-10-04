@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import edu.iesam.dam2024.R
+import edu.iesam.dam2024.app.domain.ErrorApp
 import edu.iesam.dam2024.features.movies.domain.Movie
 
 class MoviesActivity : AppCompatActivity() {
@@ -80,6 +81,15 @@ class MoviesActivity : AppCompatActivity() {
         val moviesFromXml = xmlDataSource.findAll()
         Log.d("@Dev", moviesFromXml.toString())
     }*/
+
+    fun showError(error: ErrorApp) {
+        when (error) {
+            ErrorApp.InternetErrorApp -> TODO()
+            ErrorApp.ServerErrorApp -> TODO()
+            ErrorApp.DataErrorApp -> TODO()
+            ErrorApp.UnknownErrorApp -> TODO()
+        }
+    }
 
     private fun setupObserver() {
         val movieObserver = Observer<MoviesViewModel.UiState> { uiState ->
