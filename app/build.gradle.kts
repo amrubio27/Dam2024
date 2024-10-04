@@ -50,4 +50,7 @@ dependencies {
     implementation(libs.glide)
     // Coil
     implementation(libs.coil)
+    //Lifecycle
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
 }

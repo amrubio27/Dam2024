@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.features.movies.domain.Movie
 
@@ -26,8 +27,9 @@ class MoviesActivity : AppCompatActivity() {
         moviesFactory = MoviesFactory(this)
         viewModel = moviesFactory.buildViewModel()
 
-        val movies = viewModel.viewCreated()
-        bindData(movies)
+        setupObserver()
+
+        viewModel.viewCreated()
     }
 
     private fun bindData(movies: List<Movie>) {
@@ -78,6 +80,26 @@ class MoviesActivity : AppCompatActivity() {
         val moviesFromXml = xmlDataSource.findAll()
         Log.d("@Dev", moviesFromXml.toString())
     }*/
+
+    private fun setupObserver() {
+        val movieObserver = Observer<MoviesViewModel.UiState> { uiState ->
+            uiState.movies?.let { movies ->
+                bindData(movies)
+            }
+
+            uiState.errorApp?.let {
+                TODO()
+            }
+
+            if (uiState.isLoading) {
+                TODO()
+            } else {
+                TODO()
+            }
+
+        }
+        viewModel.uiState.observe(this, movieObserver)
+    }
 
     private fun navigateToMovieDetail(movieId: String) {
         /*
