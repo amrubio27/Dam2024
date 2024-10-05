@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import edu.iesam.dam2024.R
+import edu.iesam.dam2024.app.domain.ErrorApp
 import edu.iesam.dam2024.features.superheroes.data.local.SuperHeroXmlLocalDataSource
 import edu.iesam.dam2024.features.superheroes.domain.SuperHero
 import kotlinx.coroutines.launch
@@ -22,12 +24,27 @@ class MainActivity : AppCompatActivity() {
         superHeroFactory = SuperHeroFactory(this)
         viewModel = superHeroFactory.buildViewModel()
 
-        lifecycleScope.launch {
-            val superHeroes = viewModel.fetchSuperHeroes()
-            bindData(superHeroes)
-            //Log.d("@Dev", "SuperHeroes: $superHeroes")
+        setupObserver()
 
+        viewModel.fetchSuperHeroes()
+    }
+
+    private fun setupObserver() {
+        val superHeroesObserver = Observer<SuperHeroesViewModel.UiState> { uiState ->
+            uiState.superHeroes?.let { superHeroes ->
+                bindData(superHeroes)
+            }
+            uiState.errorApp?.let {
+                TODO()
+            }
+
+            if (uiState.isLoading) {
+                TODO()
+            } else {
+                TODO()
+            }
         }
+        viewModel.uiState.observe(this, superHeroesObserver)
     }
 
     private fun navigateToDetail(superHeroId: String) {
@@ -76,12 +93,21 @@ class MainActivity : AppCompatActivity() {
         }*/
 
         val superHeroes = viewModel.fetchSuperHeroes()
-        xmlDataSource.saveAll(superHeroes)
+        //xmlDataSource.saveAll(superHeroes)
 
         /*val superHeroSaved = xmlDataSource.find()
         Log.d("@Dev", superHeroSaved.toString())
 
         val superHeroDelete = xmlDataSource.delete()*/
+    }
+
+    fun showError(error: ErrorApp) {
+        when (error) {
+            ErrorApp.InternetErrorApp -> TODO()
+            ErrorApp.ServerErrorApp -> TODO()
+            ErrorApp.DataErrorApp -> TODO()
+            ErrorApp.UnknownErrorApp -> TODO()
+        }
     }
 
 }

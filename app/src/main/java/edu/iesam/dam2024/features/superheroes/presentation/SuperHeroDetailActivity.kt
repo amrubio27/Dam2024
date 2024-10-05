@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import coil.load
 import edu.iesam.dam2024.R
@@ -24,14 +25,29 @@ class SuperHeroDetailActivity : AppCompatActivity() {
         superHeroFactory = SuperHeroFactory(this)
         viewModel = superHeroFactory.buildDetailViewModel()
 
+        setupObserver()
+
         getSuperHeroId()?.let {
-            lifecycleScope.launch {
-                val superHero = viewModel.fetchSuperHero(it)
-                superHero?.let {
-                    bindData(it)
-                }
+            viewModel.fetchSuperHero(it)
+        }
+    }
+
+    private fun setupObserver() {
+        val superHeroObserver = Observer<SuperHeroDetailViewModel.UiState> { uiState ->
+            uiState.superHero?.let { superHero ->
+                bindData(superHero)
+            }
+            uiState.errorApp?.let {
+                TODO()
+            }
+
+            if (uiState.isLoading) {
+                TODO()
+            } else {
+                TODO()
             }
         }
+        viewModel.uiState.observe(this, superHeroObserver)
     }
 
     private fun getSuperHeroId(): String? {
