@@ -52,4 +52,6 @@ dependencies {
     implementation (libs.converter.gson.v2110)
     //Coil
     implementation(libs.coil)
+    //Coroutines
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 }

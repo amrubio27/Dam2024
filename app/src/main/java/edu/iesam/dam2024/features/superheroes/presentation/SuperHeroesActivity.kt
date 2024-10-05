@@ -1,6 +1,7 @@
 package edu.iesam.dam2024.features.superheroes.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         setupObserver()
 
         viewModel.fetchSuperHeroes()
+
     }
 
     private fun setupObserver() {
@@ -39,9 +41,10 @@ class MainActivity : AppCompatActivity() {
             }
 
             if (uiState.isLoading) {
-                TODO()
+
+                Log.d("@dev", "Cargando...")
             } else {
-                TODO()
+                Log.d("@dev", "Cargando...")
             }
         }
         viewModel.uiState.observe(this, superHeroesObserver)

@@ -3,15 +3,14 @@ package edu.iesam.dam2024.features.superheroes.presentation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import coil.load
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.features.superheroes.domain.SuperHero
-import kotlinx.coroutines.launch
 
 class SuperHeroDetailActivity : AppCompatActivity() {
 
@@ -27,8 +26,8 @@ class SuperHeroDetailActivity : AppCompatActivity() {
 
         setupObserver()
 
-        getSuperHeroId()?.let {
-            viewModel.fetchSuperHero(it)
+        getSuperHeroId()?.let { superHeroId ->
+            viewModel.fetchSuperHero(superHeroId)
         }
     }
 
@@ -42,9 +41,11 @@ class SuperHeroDetailActivity : AppCompatActivity() {
             }
 
             if (uiState.isLoading) {
-                TODO()
+
+                Log.d("@dev", "Cargando...")
             } else {
-                TODO()
+
+                Log.d("@dev", "Cargando...")
             }
         }
         viewModel.uiState.observe(this, superHeroObserver)
