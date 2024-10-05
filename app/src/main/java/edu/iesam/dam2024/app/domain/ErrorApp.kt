@@ -6,7 +6,7 @@ sealed class ErrorApp {
     object DataErrorApp : ErrorApp()
     object UnknownErrorApp : ErrorApp()
 
-    companion object {
+    /*companion object {
         @Volatile
         private var instance: ErrorApp? = null
 
@@ -15,7 +15,7 @@ sealed class ErrorApp {
                 instance ?: UnknownErrorApp.also { instance = it }
             }
         }
-    }
+    }*/
 
 }
 
