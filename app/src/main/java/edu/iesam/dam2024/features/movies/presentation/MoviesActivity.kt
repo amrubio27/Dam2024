@@ -1,6 +1,7 @@
 package edu.iesam.dam2024.features.movies.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +32,28 @@ class MoviesActivity : AppCompatActivity() {
         setupObserver()
 
         viewModel.viewCreated()
+    }
+
+
+    private fun setupObserver() {
+        val movieObserver = Observer<MoviesViewModel.UiState> { uiState ->
+            uiState.movies?.let { movies ->
+                bindData(movies)
+            }
+
+            uiState.errorApp?.let {
+                TODO()
+            }
+
+            if (uiState.isLoading) {
+                Log.d("@dev", "Loading")
+            } else {
+
+                Log.d("@dev", "Loading")
+            }
+
+        }
+        viewModel.uiState.observe(this, movieObserver)
     }
 
     private fun bindData(movies: List<Movie>) {
@@ -89,26 +112,6 @@ class MoviesActivity : AppCompatActivity() {
             ErrorApp.DataErrorApp -> TODO()
             ErrorApp.UnknownErrorApp -> TODO()
         }
-    }
-
-    private fun setupObserver() {
-        val movieObserver = Observer<MoviesViewModel.UiState> { uiState ->
-            uiState.movies?.let { movies ->
-                bindData(movies)
-            }
-
-            uiState.errorApp?.let {
-                TODO()
-            }
-
-            if (uiState.isLoading) {
-                TODO()
-            } else {
-                TODO()
-            }
-
-        }
-        viewModel.uiState.observe(this, movieObserver)
     }
 
     private fun navigateToMovieDetail(movieId: String) {

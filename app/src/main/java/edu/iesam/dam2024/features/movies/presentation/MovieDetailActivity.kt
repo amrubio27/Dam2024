@@ -3,8 +3,10 @@ package edu.iesam.dam2024.features.movies.presentation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import coil.load
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.features.movies.domain.Movie
@@ -21,15 +23,32 @@ class MovieDetailActivity : AppCompatActivity() {
         movieFactory = MoviesFactory(this)
         viewModel = movieFactory.buildMovieDetailViewModel()
 
+        setupObserver()
+
         getMovieId()?.let { movieId ->
-            viewModel.viewCreated(movieId)?.let { movie ->
-                bindData(movie)
-            }
+            viewModel.viewCreated(movieId)
         }
     }
 
-    private fun getMovieId(): String? {
-        return intent.getStringExtra(KEY_MOVIE_ID)
+    private fun setupObserver() {
+        val movieObserver = Observer<MovieDetailViewModel.UiState> { uiState ->
+            uiState.movie?.let { movies ->
+                bindData(movies)
+            }
+
+            uiState.errorApp?.let {
+                TODO()
+            }
+
+            if (uiState.isLoading) {
+                Log.d("@dev", "Loading")
+            } else {
+
+                Log.d("@dev", "Loading")
+            }
+
+        }
+        viewModel.uiState.observe(this, movieObserver)
     }
 
     private fun bindData(movie: Movie) {
@@ -43,6 +62,11 @@ class MovieDetailActivity : AppCompatActivity() {
             .load(movie.poster)
             .into(imageView)*/
     }
+
+    private fun getMovieId(): String? {
+        return intent.getStringExtra(KEY_MOVIE_ID)
+    }
+
 
     companion object {
         const val KEY_MOVIE_ID = "key_movie_id"
