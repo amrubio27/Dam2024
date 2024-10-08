@@ -10,9 +10,9 @@
     <!--Fila 1-->
     <LinearLayout
         android:id="@+id/layout_1"
-        android:layout_margin="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:orientation="horizontal">
 
         <TextView
@@ -33,9 +33,9 @@
     <!--Fila 2-->
     <LinearLayout
         android:id="@+id/layout_2"
-        android:layout_margin="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:orientation="horizontal">
 
         <TextView
@@ -56,9 +56,9 @@
     <!--Fila 3-->
     <LinearLayout
         android:id="@+id/layout_3"
-        android:layout_margin="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:orientation="horizontal">
 
         <TextView
@@ -78,9 +78,9 @@
     <!--Fila 4-->
     <LinearLayout
         android:id="@+id/layout_4"
-        android:layout_margin="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:orientation="horizontal">
 
         <TextView

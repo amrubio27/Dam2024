@@ -1,14 +1,9 @@
 package edu.iesam.dam2024.features.movies.presentation
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.app.domain.ErrorApp
-import edu.iesam.dam2024.features.movies.domain.Movie
 
 class MoviesActivity : AppCompatActivity() {
     /*
@@ -24,18 +19,18 @@ class MoviesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movie)
+        setContentView(R.layout.fragment_movies)
 
         moviesFactory = MoviesFactory(this)
         viewModel = moviesFactory.buildViewModel()
 
-        setupObserver()
+        //setupObserver()
 
         viewModel.viewCreated()
     }
 
 
-    private fun setupObserver() {
+    /*private fun setupObserver() {
         val movieObserver = Observer<MoviesViewModel.UiState> { uiState ->
             uiState.movies?.let { movies ->
                 bindData(movies)
@@ -54,9 +49,9 @@ class MoviesActivity : AppCompatActivity() {
 
         }
         viewModel.uiState.observe(this, movieObserver)
-    }
+    }*/
 
-    private fun bindData(movies: List<Movie>) {
+    /*private fun bindData(movies: List<Movie>) {
         findViewById<TextView>(R.id.movie_id_1).text = movies[0].id
         findViewById<TextView>(R.id.movie_title_1).text = movies[0].title
         findViewById<LinearLayout>(R.id.layout_1).setOnClickListener {
@@ -81,7 +76,7 @@ class MoviesActivity : AppCompatActivity() {
             navigateToMovieDetail(movies[3].id)
         }
 
-    }
+    }*/
 
     /*private fun testXml() {
         val xmlDataSource = MovieXmlLocalDataSource(this)
