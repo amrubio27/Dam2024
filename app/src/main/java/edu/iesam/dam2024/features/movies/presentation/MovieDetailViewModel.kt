@@ -15,6 +15,7 @@ class MovieDetailViewModel(
 
     private val _uiState = MutableLiveData<UiState>()
     val uiState: LiveData<UiState> = _uiState
+
     /**
      * Gestionar la lògica de la pantalla y los casos de uso
      * recibe por parametro el caso de uso

@@ -14,19 +14,19 @@ class MoviesActivity : AppCompatActivity() {
     /*private val movieFactory: MovieFactory = MovieFactory()
     private val viewModel: MovieViewModel = movieFactory.buildViewModel()*/
 
-    private lateinit var moviesFactory: MoviesFactory
-    private lateinit var viewModel: MoviesViewModel
+    //private lateinit var moviesFactory: MoviesFactory
+    //private lateinit var viewModel: MoviesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_movies)
+        setContentView(R.layout.activity_movies)
 
-        moviesFactory = MoviesFactory(this)
-        viewModel = moviesFactory.buildViewModel()
+        //moviesFactory = MoviesFactory(this)
+        //viewModel = moviesFactory.buildViewModel()
 
         //setupObserver()
 
-        viewModel.viewCreated()
+        //viewModel.viewCreated()
     }
 
 
@@ -114,7 +114,7 @@ class MoviesActivity : AppCompatActivity() {
         val intent = Intent(this, MovieDetailActivity::class.java)
         startActivity(intent)
          */
-        startActivity(MovieDetailActivity.getIntent(this, movieId))
+        //startActivity(MovieDetailActivity.getIntent(this, movieId))
     }
 
     override fun onStart() {

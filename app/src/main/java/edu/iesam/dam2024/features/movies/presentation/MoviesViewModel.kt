@@ -24,6 +24,7 @@ class MoviesViewModel(
 
 
     fun viewCreated() {
+        _uiState.value = UiState(isLoading = true)
         // Lanzar la corrutina en el hilo IO
         viewModelScope.launch(Dispatchers.IO) {
             // Obtener las películas
