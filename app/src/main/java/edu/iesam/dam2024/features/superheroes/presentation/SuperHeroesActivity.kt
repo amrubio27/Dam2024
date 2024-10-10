@@ -112,5 +112,4 @@ class MainActivity : AppCompatActivity() {
             ErrorApp.UnknownErrorApp -> TODO()
         }
     }
-
 }
