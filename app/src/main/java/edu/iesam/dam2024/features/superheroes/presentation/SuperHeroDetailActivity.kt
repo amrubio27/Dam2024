@@ -1,18 +1,6 @@
 package edu.iesam.dam2024.features.superheroes.presentation
 
-import android.content.Context
-import android.content.Intent
-import android.os.Bundle
-import android.util.Log
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import coil.load
-import edu.iesam.dam2024.R
-import edu.iesam.dam2024.features.superheroes.domain.SuperHero
-
-class SuperHeroDetailActivity : AppCompatActivity() {
+/*class SuperHeroDetailActivity : AppCompatActivity() {
 
     private lateinit var superHeroFactory: SuperHeroFactory
     private lateinit var viewModel: SuperHeroDetailViewModel
@@ -73,4 +61,4 @@ class SuperHeroDetailActivity : AppCompatActivity() {
         }
     }
 }
-
+*/

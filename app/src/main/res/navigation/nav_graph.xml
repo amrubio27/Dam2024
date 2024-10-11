@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/superheroes_fragment">
+
+
+    <!-- The start destination of the navigation graph -->
+    <fragment
+        android:id="@+id/superheroes_fragment"
+        android:name="edu.iesam.dam2024.features.superheroes.presentation.SuperHeroesListFragment"
+        tools:layout="@layout/fragment_superheroes">
+
+        <!-- Action to navigate to the movie detail screen -->
+        <action
+            android:id="@+id/action_movies_fragment_to_movie_detail_fragment"
+            app:destination="@id/superhero_detail_fragment" />
+
+    </fragment>
+
+    <!-- The movie detail screen -->
+    <fragment
+        android:id="@+id/superhero_detail_fragment"
+        android:name="edu.iesam.dam2024.features.movies.presentation.MovieDetailFragment"
+        tools:layout="@layout/fragment_superhero_detail">
+
+        <!-- Argument to pass the movie id to the movie detail screen -->
+        <argument
+            android:name="movieId"
+            app:argType="string"
+            app:nullable="false" />
+
+    </fragment>
+
+</navigation>
