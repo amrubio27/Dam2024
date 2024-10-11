@@ -1,7 +1,5 @@
 package edu.iesam.dam2024.features.movies.presentation
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import coil.load
 import edu.iesam.dam2024.databinding.FragmentMovieDetailBinding
 import edu.iesam.dam2024.features.movies.domain.Movie
 
 class MovieDetailFragment : Fragment() {
+
+    private val moviesArgs: MovieDetailFragmentArgs by navArgs()
 
     private lateinit var movieFactory: MoviesFactory
     private lateinit var viewModel: MovieDetailViewModel
@@ -32,9 +33,9 @@ class MovieDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupObserver()
         movieFactory = MoviesFactory(requireContext())
         viewModel = movieFactory.buildMovieDetailViewModel()
+        setupObserver()
         getMovieId()?.let {
             viewModel.viewCreated(it)
         }
@@ -60,14 +61,16 @@ class MovieDetailFragment : Fragment() {
     }
 
     private fun getMovieId(): String? {
-        return "1"
+        return moviesArgs.movieId
     }
 
     private fun bindData(movie: Movie) {
-        binding.poster.load(movie.poster)
+        binding.poster.load(movie.poster) {
+            error(android.R.drawable.ic_menu_gallery)
+        }
     }
 
-    companion object {
+    /*companion object {
         val KEY_MOVIE_ID = "key_movie_id"
 
         fun getIntent(context: Context, movieId: String): Intent {
@@ -75,5 +78,5 @@ class MovieDetailFragment : Fragment() {
             intent.putExtra(KEY_MOVIE_ID, movieId)
             return intent
         }
-    }
+    }*/
 }
