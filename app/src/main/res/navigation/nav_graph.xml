@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/superheroes_fragment">
+    app:startDestination="@id/superheroes_list_fragment">
 
 
     <!-- The start destination of the navigation graph -->
     <fragment
-        android:id="@+id/superheroes_fragment"
+        android:id="@+id/superheroes_list_fragment"
         android:name="edu.iesam.dam2024.features.superheroes.presentation.SuperHeroesListFragment"
-        tools:layout="@layout/fragment_superheroes">
+        tools:layout="@layout/fragment_superheroes_list">
 
         <!-- Action to navigate to the movie detail screen -->
         <action
@@ -22,12 +22,12 @@
     <!-- The movie detail screen -->
     <fragment
         android:id="@+id/superhero_detail_fragment"
-        android:name="edu.iesam.dam2024.features.movies.presentation.MovieDetailFragment"
+        android:name="edu.iesam.dam2024.features.superheroes.presentation.SuperheroesDetailFragment"
         tools:layout="@layout/fragment_superhero_detail">
 
         <!-- Argument to pass the movie id to the movie detail screen -->
         <argument
-            android:name="movieId"
+            android:name="superheroId"
             app:argType="string"
             app:nullable="false" />
 

@@ -14,10 +14,10 @@ import edu.iesam.dam2024.features.superheroes.domain.SuperHero
 
 class SuperHeroesListFragment : Fragment() {
 
-    private lateinit var viewModel: SuperHeroesViewModel
     private lateinit var superHeroesFactory: SuperHeroFactory
+    private lateinit var viewModel: SuperHeroesViewModel
 
-    //binding
+
     private var _binding: FragmentSuperheroesListBinding? = null
     private val binding get() = _binding!!
 
@@ -27,7 +27,7 @@ class SuperHeroesListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSuperheroesListBinding.inflate(inflater, container, false)
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -62,31 +62,30 @@ class SuperHeroesListFragment : Fragment() {
 
     private fun bindData(superHeroes: List<SuperHero>) {
         binding.apply {
-
-            superheroId1.apply {
-                text = superHeroes[0].name
-                text = superHeroes[0].id.toString()
+            layout1.apply {
+                superheroId1.text = superHeroes[0].id.toString()
+                superheroName1.text = superHeroes[0].name
                 setOnClickListener {
                     navigateToDetail(superHeroes[0].id.toString())
                 }
             }
-            superheroId2.apply {
-                text = superHeroes[1].name
-                text = superHeroes[1].id.toString()
+            layout2.apply {
+                superheroId2.text = superHeroes[1].id.toString()
+                superheroName2.text = superHeroes[1].name
                 setOnClickListener {
                     navigateToDetail(superHeroes[1].id.toString())
                 }
             }
-            superheroId3.apply {
-                text = superHeroes[2].name
-                text = superHeroes[2].id.toString()
+            layout3.apply {
+                superheroId3.text = superHeroes[2].id.toString()
+                superheroName3.text = superHeroes[2].name
                 setOnClickListener {
                     navigateToDetail(superHeroes[2].id.toString())
                 }
             }
-            superheroId4.apply {
-                text = superHeroes[3].name
-                text = superHeroes[3].id.toString()
+            layout4.apply {
+                superheroId4.text = superHeroes[3].id.toString()
+                superheroName4.text = superHeroes[3].name
                 setOnClickListener {
                     navigateToDetail(superHeroes[3].id.toString())
                 }
