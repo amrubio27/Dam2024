@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import edu.iesam.dam2024.app.domain.ErrorApp
 import edu.iesam.dam2024.databinding.FragmentMoviesBinding
-import edu.iesam.dam2024.features.movies.domain.Movie
+import edu.iesam.dam2024.features.movies.presentation.adapter.MoviesAdapter
 
 class MoviesFragment : Fragment() {
 
@@ -19,6 +20,7 @@ class MoviesFragment : Fragment() {
 
     private var _binding: FragmentMoviesBinding? = null
     private val binding get() = _binding!!
+    private val moviesAdapter = MoviesAdapter()
 
 
     override fun onCreateView(
@@ -27,6 +29,9 @@ class MoviesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentMoviesBinding.inflate(inflater, container, false)
+
+        setupView()
+
         return binding.root
     }
 
@@ -40,10 +45,27 @@ class MoviesFragment : Fragment() {
         viewModel.viewCreated()
     }
 
+    private fun setupView() {
+        binding.apply {
+            listMovies.apply {
+                layoutManager = GridLayoutManager(
+                    context,
+                    1,
+                    GridLayoutManager.VERTICAL,
+                    false
+                )
+                moviesAdapter.setEvent { movieId ->
+                    navigateToMovieDetail(movieId)
+                }
+                adapter = moviesAdapter
+            }
+        }
+    }
+
     private fun setupObserver() {
         val movieObserver = Observer<MoviesViewModel.UiState> { uiState ->
             uiState.movies?.let { movies ->
-                bindData(movies)
+                moviesAdapter.submitList(movies)
             }
 
             uiState.errorApp?.let {
@@ -59,37 +81,6 @@ class MoviesFragment : Fragment() {
             }
         }
         viewModel.uiState.observe(viewLifecycleOwner, movieObserver)
-    }
-
-    private fun bindData(movies: List<Movie>) {
-        binding.apply {
-            movieId1.apply {
-                text = movies[0].id
-                movieTitle1.text = movies[0].title
-                layout1.setOnClickListener {
-                    navigateToMovieDetail(movies[0].id)
-                }
-            }
-        }
-
-        binding.movieId2.text = movies[1].id
-        binding.movieTitle2.text = movies[1].title
-        binding.layout2.setOnClickListener {
-            navigateToMovieDetail(movies[1].id)
-        }
-
-        binding.movieId3.text = movies[2].id
-        binding.movieTitle3.text = movies[2].title
-        binding.layout3.setOnClickListener {
-            navigateToMovieDetail(movies[2].id)
-        }
-
-        binding.movieId4.text = movies[3].id
-        binding.movieTitle4.text = movies[3].title
-        binding.layout4.setOnClickListener {
-            navigateToMovieDetail(movies[3].id)
-        }
-
     }
 
     private fun navigateToMovieDetail(movieId: String) {
