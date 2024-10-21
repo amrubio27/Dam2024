@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import edu.iesam.dam2024.app.domain.ErrorApp
 import edu.iesam.dam2024.databinding.FragmentSuperheroesListBinding
-import edu.iesam.dam2024.features.superheroes.domain.SuperHero
+import edu.iesam.dam2024.features.superheroes.presentation.adapter.SuperHeroAdapter
 
 class SuperHeroesListFragment : Fragment() {
 
@@ -20,6 +21,7 @@ class SuperHeroesListFragment : Fragment() {
 
     private var _binding: FragmentSuperheroesListBinding? = null
     private val binding get() = _binding!!
+    private val superHeroesAdapter = SuperHeroAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,7 +29,27 @@ class SuperHeroesListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSuperheroesListBinding.inflate(inflater, container, false)
+
+        setupView()
+
         return binding.root
+    }
+
+    private fun setupView() {
+        binding.apply {
+            listSuperHeroes.apply {
+                layoutManager = GridLayoutManager(
+                    context,
+                    1,
+                    GridLayoutManager.VERTICAL,
+                    false
+                )
+                superHeroesAdapter.setEvent { superHero ->
+                    navigateToDetail(superHero)
+                }
+                adapter = superHeroesAdapter
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,7 +65,7 @@ class SuperHeroesListFragment : Fragment() {
     private fun setupObservers() {
         val superHeroesObserver = Observer<SuperHeroesViewModel.UiState> { uiState ->
             uiState.superHeroes?.let { superHeroes ->
-                bindData(superHeroes)
+                superHeroesAdapter.submitList(superHeroes)
             }
             uiState.errorApp?.let {
                 //Pintar el error
@@ -58,39 +80,6 @@ class SuperHeroesListFragment : Fragment() {
             }
         }
         viewModel.uiState.observe(viewLifecycleOwner, superHeroesObserver)
-    }
-
-    private fun bindData(superHeroes: List<SuperHero>) {
-        binding.apply {
-            layout1.apply {
-                superheroId1.text = superHeroes[0].id.toString()
-                superheroName1.text = superHeroes[0].name
-                setOnClickListener {
-                    navigateToDetail(superHeroes[0].id.toString())
-                }
-            }
-            layout2.apply {
-                superheroId2.text = superHeroes[1].id.toString()
-                superheroName2.text = superHeroes[1].name
-                setOnClickListener {
-                    navigateToDetail(superHeroes[1].id.toString())
-                }
-            }
-            layout3.apply {
-                superheroId3.text = superHeroes[2].id.toString()
-                superheroName3.text = superHeroes[2].name
-                setOnClickListener {
-                    navigateToDetail(superHeroes[2].id.toString())
-                }
-            }
-            layout4.apply {
-                superheroId4.text = superHeroes[3].id.toString()
-                superheroName4.text = superHeroes[3].name
-                setOnClickListener {
-                    navigateToDetail(superHeroes[3].id.toString())
-                }
-            }
-        }
     }
 
     private fun navigateToDetail(superHeroId: String) {
