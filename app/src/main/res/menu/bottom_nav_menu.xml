@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/superheroes_list_fragment"
+        android:icon="@drawable/baseline_navigate_next_24"
+        android:title="@string/title_list_superheroes" />
+
+    <item
+        android:id="@+id/fragment_beta"
+        android:icon="@drawable/baseline_navigate_next_24"
+        android:title="@string/title_fragment_beta" />
+
+</menu>

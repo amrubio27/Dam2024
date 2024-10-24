@@ -12,10 +12,14 @@
         android:name="edu.iesam.dam2024.features.superheroes.presentation.SuperHeroesListFragment"
         tools:layout="@layout/fragment_superheroes_list">
 
-        <!-- Action to navigate to the movie detail screen -->
+        <!-- Action to navigate to the superHero detail screen -->
         <action
-            android:id="@+id/action_movies_fragment_to_movie_detail_fragment"
+            android:id="@+id/action_superheroes_fragment_to_superheroes_detail_fragment"
             app:destination="@id/superhero_detail_fragment" />
+
+        <action
+            android:id="@+id/action_superhero_list_fragment_to_fragment_beta"
+            app:destination="@id/fragment_beta" />
 
     </fragment>
 
@@ -30,6 +34,17 @@
             android:name="superheroId"
             app:argType="string"
             app:nullable="false" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_beta"
+        android:name="edu.iesam.dam2024.features.fragmenB.FragmentBeta"
+        tools:layout="@layout/fragment_fragment_beta">
+
+        <action
+            android:id="@+id/action_fragment_beta_to_superhero_list_fragment"
+            app:destination="@id/superheroes_list_fragment" />
 
     </fragment>
 

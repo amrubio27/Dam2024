@@ -2,5 +2,8 @@
     <string name="app_name">Dam2024</string>
     <string name="hero_placeholder">Hola soy un placeholder</string>
     <string name="hero_id_placeholder">NaN</string>
+    <string name="title_list_superheroes">List</string>
+    <string name="title_fragment_beta">beta</string>
+    <string name="title_notifications">notifications</string>
 
 </resources>

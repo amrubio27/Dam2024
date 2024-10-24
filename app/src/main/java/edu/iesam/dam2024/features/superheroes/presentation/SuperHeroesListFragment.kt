@@ -60,6 +60,7 @@ class SuperHeroesListFragment : Fragment() {
         setupObservers()
 
         viewModel.fetchSuperHeroes()
+
     }
 
     private fun setupObservers() {
@@ -84,7 +85,7 @@ class SuperHeroesListFragment : Fragment() {
 
     private fun navigateToDetail(superHeroId: String) {
         findNavController().navigate(
-            SuperHeroesListFragmentDirections.actionMoviesFragmentToMovieDetailFragment(
+            SuperHeroesListFragmentDirections.actionSuperheroesFragmentToSuperheroesDetailFragment(
                 superHeroId
             )
         )
