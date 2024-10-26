@@ -18,7 +18,7 @@
             app:destination="@id/superhero_detail_fragment" />
 
         <action
-            android:id="@+id/action_superhero_list_fragment_to_fragment_beta"
+            android:id="@+id/action_superheroes_list_fragment_to_fragment_beta"
             app:destination="@id/fragment_beta" />
 
     </fragment>

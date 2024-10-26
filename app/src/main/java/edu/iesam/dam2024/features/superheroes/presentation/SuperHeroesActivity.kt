@@ -6,12 +6,18 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import edu.iesam.dam2024.R
+import edu.iesam.dam2024.databinding.ActivitySuperHeroesBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private var _binding: ActivitySuperHeroesBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_super_heroes)
+
+        _binding = ActivitySuperHeroesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setupView()
     }
@@ -21,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        findViewById<BottomNavigationView>(R.id.main_menu).setupWithNavController(navController)
+        binding.mainMenu.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.listSuperHeroes -> {
