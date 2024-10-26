@@ -10,13 +10,12 @@ import edu.iesam.dam2024.databinding.ActivitySuperHeroesBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private var _binding: ActivitySuperHeroesBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: ActivitySuperHeroesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        _binding = ActivitySuperHeroesBinding.inflate(layoutInflater)
+        binding = ActivitySuperHeroesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setupView()
