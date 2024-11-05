@@ -11,12 +11,12 @@ import androidx.navigation.fragment.navArgs
 import coil.load
 import edu.iesam.dam2024.databinding.FragmentSuperheroDetailBinding
 import edu.iesam.dam2024.features.superheroes.domain.SuperHero
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SuperheroesDetailFragment : Fragment() {
     private val superheroArgs: SuperheroesDetailFragmentArgs by navArgs()
 
-    private lateinit var superHeroFactory: SuperHeroFactory
-    private lateinit var viewModel: SuperHeroDetailViewModel
+    val viewModel: SuperHeroDetailViewModel by viewModel()
 
     private var _binding: FragmentSuperheroDetailBinding? = null
     private val binding get() = _binding!!
@@ -33,10 +33,7 @@ class SuperheroesDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        superHeroFactory = SuperHeroFactory(requireContext())
-        viewModel = superHeroFactory.buildDetailViewModel()
         setupObserver()
-
         getSuperHeroId()?.let { superHeroId ->
             viewModel.fetchSuperHero(superHeroId)
         }

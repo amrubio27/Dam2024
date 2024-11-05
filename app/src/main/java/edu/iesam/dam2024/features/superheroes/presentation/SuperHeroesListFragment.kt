@@ -54,12 +54,8 @@ class SuperHeroesListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*superHeroesFactory = SuperHeroFactory(requireContext())
-        viewModel = superHeroesFactory.buildViewModel()*/
         setupObservers()
-
         viewModel.fetchSuperHeroes()
-
     }
 
     private fun setupObservers() {

@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import edu.iesam.dam2024.R
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FragmentBeta : Fragment() {
 
@@ -14,7 +14,7 @@ class FragmentBeta : Fragment() {
         fun newInstance() = FragmentBeta()
     }
 
-    private val viewModel: FragmentBetaViewModel by viewModels()
+    private val viewModel: FragmentBetaViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
