@@ -2,16 +2,17 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.navigation.safeargs.kotlin)
+    alias(libs.plugins.ksp)
 }
 
 android {
     namespace = "edu.iesam.dam2024"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "edu.iesam.dam2024"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -55,6 +56,7 @@ dependencies {
 
     //Retrofit
     implementation(libs.retrofit)
+    implementation(libs.logging.interceptor)
     //Gson Converter
     implementation (libs.converter.gson.v2110)
     //Coil
@@ -68,4 +70,14 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.fragment.ktx)
+    //Koin
+    implementation(libs.koin.android)
+    implementation(libs.koin.test)
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.ksp.compiler)
+    implementation(libs.koin.annotations)
+    ksp(libs.koin.ksp.compiler)
+
+
+
 }

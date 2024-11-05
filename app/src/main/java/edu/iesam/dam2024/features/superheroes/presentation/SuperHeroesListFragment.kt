@@ -12,12 +12,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import edu.iesam.dam2024.app.domain.ErrorApp
 import edu.iesam.dam2024.databinding.FragmentSuperheroesListBinding
 import edu.iesam.dam2024.features.superheroes.presentation.adapter.SuperHeroAdapter
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SuperHeroesListFragment : Fragment() {
 
-    private lateinit var superHeroesFactory: SuperHeroFactory
-    private lateinit var viewModel: SuperHeroesViewModel
-
+    val viewModel: SuperHeroesViewModel by viewModel()
 
     private var _binding: FragmentSuperheroesListBinding? = null
     private val binding get() = _binding!!
@@ -55,8 +54,8 @@ class SuperHeroesListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        superHeroesFactory = SuperHeroFactory(requireContext())
-        viewModel = superHeroesFactory.buildViewModel()
+        /*superHeroesFactory = SuperHeroFactory(requireContext())
+        viewModel = superHeroesFactory.buildViewModel()*/
         setupObservers()
 
         viewModel.fetchSuperHeroes()

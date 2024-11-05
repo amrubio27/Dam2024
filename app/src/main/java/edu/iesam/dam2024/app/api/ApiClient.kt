@@ -9,6 +9,6 @@ class ApiClient {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val apiService: ApiService = retrofit.create(ApiService::class.java)
+    val superHeroApiService: SuperHeroApiService = retrofit.create(SuperHeroApiService::class.java)
 
 }

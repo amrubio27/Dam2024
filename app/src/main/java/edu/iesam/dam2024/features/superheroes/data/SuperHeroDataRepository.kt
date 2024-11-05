@@ -4,7 +4,9 @@ import edu.iesam.dam2024.features.superheroes.data.local.SuperHeroXmlLocalDataSo
 import edu.iesam.dam2024.features.superheroes.data.remote.SuperHeroRemoteDataSource
 import edu.iesam.dam2024.features.superheroes.domain.SuperHero
 import edu.iesam.dam2024.features.superheroes.domain.SuperHeroRepository
+import org.koin.core.annotation.Single
 
+@Single
 class SuperHeroDataRepository(
     private val local: SuperHeroXmlLocalDataSource,
     private val remote: SuperHeroRemoteDataSource
