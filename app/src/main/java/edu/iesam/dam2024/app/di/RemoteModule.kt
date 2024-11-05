@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 @ComponentScan
 class RemoteModule {
 
-    private val url = "https://akabab.github.io/superhero-api/api/"
+    private val url = "https://"
 
     @Single
     fun provideLogginInterceptor() = HttpLoggingInterceptor().apply {
