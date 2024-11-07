@@ -33,5 +33,5 @@ class RemoteModule {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    //fun provideSuperHeroRetrofit() ???
+    //fun provideSuperHeroRetrofit(okHttp...etc) con su url correspondiente en baseUrl???
 }

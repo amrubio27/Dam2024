@@ -1,20 +1,23 @@
 package edu.iesam.dam2024.features.superheroes.data.remote
 
+import edu.iesam.dam2024.app.di.RemoteModule
 import edu.iesam.dam2024.features.superheroes.di.SuperHeroModule
 import edu.iesam.dam2024.features.superheroes.domain.SuperHero
 import org.koin.core.annotation.Single
-import retrofit2.Retrofit
 
 @Single
-class SuperHeroRemoteDataSource(retrofit: Retrofit) {
+class SuperHeroRemoteDataSource {
 
-    /*
-    class SuperHeroRemoteDataSource {
-    private val apiClient = SuperHeroModule().provideSuperHeroService(retrofit = ApiClient.provideRetrofit())
-    */
+    //private val apiClient = SuperHeroModule().provideSuperHeroService(retrofit = ApiClient.provideRetrofit())
 
-    private val apiClient =
-        SuperHeroModule().provideSuperHeroService(retrofit)
+    private val apiClient = SuperHeroModule().provideSuperHeroService(
+        retrofit = RemoteModule().provideRetrofit(
+            okHttpClient = RemoteModule().provideOkHttpClient(
+                loggingInterceptor = RemoteModule().provideLogginInterceptor()
+            )
+        )
+    )
+
 
     suspend fun getSuperHeroes(): List<SuperHero> {
         val response = apiClient.getSuperHeroes()
