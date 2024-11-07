@@ -10,5 +10,4 @@ import org.koin.core.annotation.Single
 class AppModule {
     @Single
     fun provideGson() = Gson()
-
 }
