@@ -1,22 +1,23 @@
-package edu.iesam.dam2024.features.superheroes.domain
+package edu.iesam.dam2024.features.superheroes.data.remote
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class SuperHero(
+data class SuperHeroApiModel(
     val id: Int,
     val name: String,
     val slug: String,
-    val powerstats: PowerStats,
-    val appearance: Appearance,
-    val biography: Biography,
-    val work: Work,
-    val connections: Connections,
-    val images: Images
+    val powerstats: PowerStatsApiModel,
+    val appearance: AppearanceApiModel,
+    val biography: BiographyApimodel,
+    val work: WorkApiModel,
+    val connections: ConnectionsApiModel,
+    val images: ImagesApiModel
+
 )
 
 @Serializable
-data class PowerStats(
+data class PowerStatsApiModel(
     val intelligence: Int,
     val strength: Int,
     val speed: Int,
@@ -26,7 +27,7 @@ data class PowerStats(
 )
 
 @Serializable
-data class Appearance(
+data class AppearanceApiModel(
     val gender: String,
     val race: String?,
     val height: List<String>?,
@@ -37,7 +38,7 @@ data class Appearance(
 )
 
 @Serializable
-data class Biography(
+data class BiographyApimodel(
     val fullName: String,
     val alterEgos: String,
     val aliases: List<String>,
@@ -48,19 +49,19 @@ data class Biography(
 )
 
 @Serializable
-data class Work(
+data class WorkApiModel(
     val occupation: String,
     val base: String
 )
 
 @Serializable
-data class Connections(
+data class ConnectionsApiModel(
     val groupAffiliation: String,
     val relatives: String
 )
 
 @Serializable
-data class Images(
+data class ImagesApiModel(
     val xs: String,
     val sm: String,
     val md: String,
