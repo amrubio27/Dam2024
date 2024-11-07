@@ -1,24 +1,20 @@
 [versions]
-agp = "8.7.2"
+agp = "8.7.0"
 coil = "2.7.0"
 converterGson = "2.11.0"
-fragmentKtx = "1.8.5"
+fragmentKtx = "1.8.4"
 glide = "4.16.0"
-kotlin = "2.0.21"
-coreKtx = "1.15.0"
+kotlin = "1.9.0"
+coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
-lifecycleViewmodelKtx = "2.8.7"
+lifecycleViewmodelKtx = "2.8.6"
 material = "1.12.0"
-activity = "1.9.3"
-constraintlayout = "2.2.0"
-navigationFragment = "2.8.3"
-koin = "4.0.0"
-ksp = "2.0.21-1.0.26"
-koinAnnotations = "2.0.0-Beta1"
-koinKspCompiler = "2.0.0-Beta1"
+activity = "1.9.2"
+constraintlayout = "2.1.4"
+navigationFragment = "2.8.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,14 +34,8 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
-koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
-koin-test = { module = "io.insert-koin:koin-test-junit4", version.ref = "koin" }
-koin-ksp-compiler = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koinKspCompiler" }
-koin-annotations = { module = "io.insert-koin:koin-annotations", version.ref = "koinAnnotations" }
-koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin" }
-
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 navigation-safeargs-kotlin = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigationFragment" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
