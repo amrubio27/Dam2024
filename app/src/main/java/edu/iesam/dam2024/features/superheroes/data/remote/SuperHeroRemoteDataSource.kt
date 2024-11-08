@@ -18,7 +18,6 @@ class SuperHeroRemoteDataSource {
         )
     )
 
-
     suspend fun getSuperHeroes(): List<SuperHero> {
         val response = apiClient.getSuperHeroes()
         /**
@@ -34,4 +33,24 @@ class SuperHeroRemoteDataSource {
         val response = apiClient.getHeroById(id)
         return response?.body()
     }
+
+    /*suspend fun getSuperHeroes(): Result<List<SuperHero>> {
+        val response = apiClient.getSuperHeroes()
+        return if (response.isSuccessful) {
+            Result.success(response.body()!!)
+        } else {
+            //TODO: Handle error
+            Result.failure(ErrorApp.ServerErrorApp)
+        }
+    }*/
+
+    /*suspend fun getSuperHeroById(id: String): Result<SuperHero> {
+        val response = apiClient.getHeroById(id)
+        return if (response.isSuccessful ?: ) {
+            Result.success(response.body()!!)
+        } else {
+            //TODO: Handle error
+            Result.failure(ErrorApp.ServerErrorApp)
+        }
+    }*/
 }

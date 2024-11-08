@@ -12,6 +12,7 @@ class SuperHeroDataRepository(
     private val remote: SuperHeroRemoteDataSource
 ) :
     SuperHeroRepository {
+
     override suspend fun getSuperHeroes(): List<SuperHero> {
         val superHeroesFromLocal = local.findAll()
         return if (superHeroesFromLocal.isEmpty()) {
@@ -33,5 +34,21 @@ class SuperHeroDataRepository(
             superHeroFromLocal
         }
     }
+
+    /*override suspend fun getSuperHeroes(): List<SuperHero> {
+        val superHeroesFromLocal = local.findAll()
+        return if (superHeroesFromLocal.isEmpty()) {
+            remote.getSuperHeroes().fold(
+                onSuccess = { superHeroesFromRemote ->
+                    local.saveAll(superHeroesFromRemote)
+                    superHeroesFromRemote
+                },
+                onFailure = {
+                    //TODO: Handle error
+                }
+            )
+        } else
+            return superHeroesFromLocal
+    }*/
 }
 
