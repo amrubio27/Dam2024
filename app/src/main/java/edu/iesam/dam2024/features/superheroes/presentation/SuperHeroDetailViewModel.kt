@@ -22,7 +22,13 @@ class SuperHeroDetailViewModel(
     fun fetchSuperHero(id: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val superHero = getSuperHeroUseCase.invoke(id)
-            _uiState.postValue(UiState(superHero = superHero))
+            _uiState.postValue(
+                UiState(
+                    superHero = superHero.getOrNull(),
+                    isLoading = false,
+                    errorApp = superHero.exceptionOrNull() as ErrorApp
+                )
+            )
         }
     }
 

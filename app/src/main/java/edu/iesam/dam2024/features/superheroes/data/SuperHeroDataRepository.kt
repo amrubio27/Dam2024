@@ -13,42 +13,22 @@ class SuperHeroDataRepository(
 ) :
     SuperHeroRepository {
 
-    override suspend fun getSuperHeroes(): List<SuperHero> {
+    override suspend fun getSuperHeroes(): Result<List<SuperHero>> {
         val superHeroesFromLocal = local.findAll()
         return if (superHeroesFromLocal.isEmpty()) {
-            val superHeroesFromRemote = remote.getSuperHeroes()
-            local.saveAll(superHeroesFromRemote)
-            superHeroesFromRemote
+            remote.getSuperHeroes()
         } else {
-            superHeroesFromLocal
+            Result.success(superHeroesFromLocal)
         }
     }
 
-    override suspend fun getSuperHeroById(id: String): SuperHero? {
+    override suspend fun getSuperHeroById(id: String): Result<SuperHero?> {
         val superHeroFromLocal = local.findById(id)
         return if (superHeroFromLocal == null) {
-            val superHeroFromRemote = remote.getSuperHeroById(id)
-            superHeroFromRemote?.let { local.save(it) }
-            superHeroFromRemote
+            remote.getSuperHeroById(id)
         } else {
-            superHeroFromLocal
+            Result.success(superHeroFromLocal)
         }
     }
-
-    /*override suspend fun getSuperHeroes(): List<SuperHero> {
-        val superHeroesFromLocal = local.findAll()
-        return if (superHeroesFromLocal.isEmpty()) {
-            remote.getSuperHeroes().fold(
-                onSuccess = { superHeroesFromRemote ->
-                    local.saveAll(superHeroesFromRemote)
-                    superHeroesFromRemote
-                },
-                onFailure = {
-                    //TODO: Handle error
-                }
-            )
-        } else
-            return superHeroesFromLocal
-    }*/
 }
 

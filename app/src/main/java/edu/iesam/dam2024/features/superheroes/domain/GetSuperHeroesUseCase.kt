@@ -4,7 +4,7 @@ import org.koin.core.annotation.Single
 
 @Single
 class GetSuperHeroesUseCase(private val repository: SuperHeroRepository) {
-    suspend fun invoke(): List<SuperHero> {
+    suspend fun invoke(): Result<List<SuperHero>> {
         return repository.getSuperHeroes()
     }
 }
