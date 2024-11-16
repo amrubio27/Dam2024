@@ -26,7 +26,7 @@ class SuperHeroesViewModel(
                 UiState(
                     superHeroes = superHeroes.getOrNull(),
                     isLoading = false,
-                    errorApp = superHeroes.exceptionOrNull() as ErrorApp
+                    errorApp = superHeroes.exceptionOrNull() as ErrorApp?
                 )
             )
         }

@@ -26,7 +26,7 @@ class SuperHeroDetailViewModel(
                 UiState(
                     superHero = superHero.getOrNull(),
                     isLoading = false,
-                    errorApp = superHero.exceptionOrNull() as ErrorApp
+                    errorApp = superHero.exceptionOrNull() as ErrorApp?
                 )
             )
         }
