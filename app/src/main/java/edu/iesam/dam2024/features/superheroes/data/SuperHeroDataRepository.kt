@@ -22,7 +22,7 @@ class SuperHeroDataRepository(
         }
     }
 
-    override suspend fun getSuperHeroById(id: String): Result<SuperHero?> {
+    override suspend fun getSuperHeroById(id: String): Result<SuperHero> {
         val superHeroFromLocal = local.findById(id)
         return if (superHeroFromLocal == null) {
             remote.getSuperHeroById(id)

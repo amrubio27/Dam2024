@@ -39,11 +39,15 @@ class SuperHeroRemoteDataSource(private val apiClient: SuperHeroService) {
     //Version con apiCall
 
     suspend fun getSuperHeroes(): Result<List<SuperHero>> {
-        return apiCall(apiClient.getSuperHeroes())
+        return apiCall {
+            apiClient.getSuperHeroes()
+        }
     }
 
     suspend fun getSuperHeroById(id: String): Result<SuperHero> {
-        return apiCall(apiClient.getHeroById(id))
+        return apiCall {
+            apiClient.getHeroById(id)
+        }
     }
 
 }
