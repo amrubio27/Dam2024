@@ -70,6 +70,7 @@ class SuperHeroesListFragment : Fragment() {
             }
 
             if (uiState.isLoading) {
+                //Pintar Skeleton
                 Log.d("@dev", "Cargando...")
             } else {
                 Log.d("@dev", "Cargando...")
