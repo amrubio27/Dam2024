@@ -73,6 +73,7 @@ class SuperHeroesListFragment : Fragment() {
                 //Pintar Skeleton
                 Log.d("@dev", "Cargando...")
             } else {
+                //Ocultar Skeleton
                 Log.d("@dev", "Cargando...")
             }
         }
