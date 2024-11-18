@@ -1,5 +1,7 @@
 package edu.iesam.dam2024.features.superheroes.di
 
+import edu.iesam.dam2024.app.data.local.db.SuperHeroDataBase
+import edu.iesam.dam2024.features.superheroes.data.local.db.SuperHeroDao
 import edu.iesam.dam2024.features.superheroes.data.remote.SuperHeroService
 import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.Module
@@ -13,4 +15,9 @@ class SuperHeroModule {
     @Single
     fun provideSuperHeroService(retrofit: Retrofit) =
         retrofit.create(SuperHeroService::class.java)
+
+    @Single
+    fun provideSuperHeroDao(db: SuperHeroDataBase): SuperHeroDao {
+        return db.superHeroDao()
+    }
 }
