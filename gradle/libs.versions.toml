@@ -24,11 +24,15 @@ legacySupportV4 = "1.0.0"
 lifecycleLivedataKtx = "2.8.7"
 koin = "4.0.0"
 ksp = "2.0.21-1.0.26"
+roomRuntime = "2.6.1"
 
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
 converter-gson-v2110 = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGsonVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
