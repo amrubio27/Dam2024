@@ -2,6 +2,7 @@ package edu.iesam.dam2024.app
 
 import android.app.Application
 import edu.iesam.dam2024.app.di.AppModule
+import edu.iesam.dam2024.app.di.LocalModule
 import edu.iesam.dam2024.app.di.RemoteModule
 import edu.iesam.dam2024.features.superheroes.di.SuperHeroModule
 import org.koin.android.ext.koin.androidContext
@@ -18,7 +19,8 @@ class SuperHeroApp : Application() {
             modules(
                 AppModule().module,
                 RemoteModule().module,
-                SuperHeroModule().module
+                SuperHeroModule().module,
+                LocalModule().module
             )
         }
     }
