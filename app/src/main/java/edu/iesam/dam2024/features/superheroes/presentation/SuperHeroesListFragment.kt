@@ -10,6 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import edu.iesam.dam2024.app.domain.ErrorApp
+import edu.iesam.dam2024.app.presentation.hide
+import edu.iesam.dam2024.app.presentation.views.ErrorAppFactory
 import edu.iesam.dam2024.databinding.FragmentSuperheroesListBinding
 import edu.iesam.dam2024.features.superheroes.presentation.adapter.SuperHeroAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,6 +23,8 @@ class SuperHeroesListFragment : Fragment() {
     private var _binding: FragmentSuperheroesListBinding? = null
     private val binding get() = _binding!!
     private val superHeroesAdapter = SuperHeroAdapter()
+
+    private var errorFactory: ErrorAppFactory? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -65,8 +69,12 @@ class SuperHeroesListFragment : Fragment() {
             }
             uiState.errorApp?.let {
                 //Pintar el error
+                //val error = ErrorAppFactory(requireContext())
+                val errorAppUi = errorFactory?.build(it)
+                binding.errorApp.render(errorAppUi!!)
             } ?: run {
                 //Ocultar el error
+                binding.errorApp.hide()
             }
 
             if (uiState.isLoading) {

@@ -7,6 +7,8 @@ import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.Module
 import org.koin.core.annotation.Single
 
+private const val TIME_CACHE = 60 * 1000L // 1 minute
+
 @Module
 @ComponentScan
 class LocalModule {

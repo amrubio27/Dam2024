@@ -18,7 +18,6 @@ interface SuperHeroDao {
     @Query("SELECT * FROM $SUPERHERO_TABLE")
     suspend fun findAll(): List<SuperHeroEntity>
 
-
     @Query("SELECT * FROM $SUPERHERO_TABLE where $SUPERHERO_ID = :superheroId LIMIT 1")
     suspend fun findById(superheroId: String): SuperHeroEntity
 

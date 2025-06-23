@@ -6,4 +6,21 @@
     <string name="title_fragment_beta">beta</string>
     <string name="title_notifications">notifications</string>
 
+    <!-- Errors -->
+    <!-- Server Error -->
+    <string name="error_server_title">Server Error</string>
+    <string name="error_server_description">There was an error with the server</string>
+    <string name="error_server_action_retry">Retry</string>
+
+    <!-- Network Error -->
+    <string name="error_network_title">Network Error</string>
+    <string name="error_network_description">There was an error with the network</string>
+    <string name="error_network_action_retry">Retry</string>
+
+    <!-- Unknown Error -->
+    <string name="error_unknown_title">Unknown Error</string>
+    <string name="error_unknown_description">There was an unknown error</string>
+    <string name="error_unknown_action_retry">Retry</string>
+
+
 </resources>

@@ -13,10 +13,14 @@ class SuperHeroDataRepository(
 ) :
     SuperHeroRepository {
 
+    private val TTL: Long = 600000
+
     override suspend fun getSuperHeroes(): Result<List<SuperHero>> {
         val superHeroesFromLocal = local.findAll()
         return if (superHeroesFromLocal.isEmpty()) {
-            remote.getSuperHeroes()
+            remote.getSuperHeroes().onSuccess { remote ->
+                local.saveAll(remote)
+            }
         } else {
             Result.success(superHeroesFromLocal)
         }
